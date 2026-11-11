@@ -1,0 +1,140 @@
+.page {
+  min-height: 100vh;
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+}
+
+.inner {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.dashedTop,
+.dashedBottom {
+  width: 100%;
+  border-top: 2px dashed var(--red-pale);
+}
+
+.layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.poemCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.flowerCenter {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.flowerSticker {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 5px 14px rgba(255, 77, 121, 0.2));
+}
+
+.flowerName {
+  color: var(--red);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.flowerSubtitle {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.message {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1rem;
+  background: #ffffff;
+  border: 1.5px solid var(--red-pale);
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(255, 77, 121, 0.08);
+  color: var(--text);
+  font-family: var(--font-body), 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.title {
+  font-family: var(--font-hand);
+  font-size: clamp(2rem, 7vw, 3rem);
+  color: var(--red);
+  font-weight: 700;
+  transform: rotate(-1.5deg);
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0.75rem 0.4rem;
+  }
+
+  .inner {
+    gap: 0.8rem;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 76px minmax(0, 1fr);
+    gap: 0.35rem;
+    align-items: center;
+  }
+
+  .poemCol {
+    gap: 0.5rem;
+  }
+
+  .flowerCenter {
+    width: 76px;
+    gap: 0.2rem;
+  }
+
+  .flowerSticker {
+    width: 76px;
+    height: 76px;
+  }
+
+  .flowerName {
+    font-size: 0.9rem;
+  }
+
+  .flowerSubtitle {
+    font-size: 0.58rem;
+  }
+
+  .message {
+    min-height: 56px;
+    padding: 0.45rem 0.3rem;
+    border-radius: 12px;
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+}

@@ -1,0 +1,221 @@
+/* ─── Hero Section: Egypt → Milano Route ─── */
+
+.page {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft radial glow behind the card */
+.page::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 77, 121, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+}
+
+.dashedTop,
+.dashedBottom {
+  width: 100%;
+  border-top: 2px dashed var(--red-pale);
+}
+
+.card {
+  width: 100%;
+  padding: 2rem 1.5rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px dashed var(--red-pale);
+  border-radius: 28px;
+  box-shadow: 0 8px 30px rgba(255, 77, 121, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+/* ─── Map / SVG area ─── */
+.mapContainer {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 1rem;
+}
+
+.mapSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* City labels */
+.cityLabel {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cityLabelEgypt {
+  fill: var(--text-light);
+}
+
+.cityLabelMilano {
+  fill: var(--red);
+}
+
+/* Pulsing dot at city locations */
+.cityDot {
+  filter: drop-shadow(0 0 4px rgba(255, 77, 121, 0.35));
+}
+
+/* Floating hearts container (positioned over the SVG) */
+.heartsOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ─── Typography ─── */
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 0.3rem;
+}
+
+.titleGroup {
+  margin-bottom: 0.6rem;
+}
+
+.titleFrom {
+  font-family: var(--font-hand);
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: var(--text);
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.titleTo {
+  font-family: var(--font-hand);
+  font-size: clamp(2.4rem, 9vw, 3.6rem);
+  color: var(--red);
+  line-height: 1;
+  font-weight: 700;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 500;
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+.heartDivider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0.2rem;
+  color: var(--red-pale);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+}
+
+.heartDividerLine {
+  width: 40px;
+  height: 1.5px;
+  background: var(--red-pale);
+  border-radius: 1px;
+}
+
+/* Scroll hint at bottom */
+.scrollHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.scrollArrow {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-light);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem 1rem 1.4rem;
+    border-radius: 22px;
+  }
+
+  .mapContainer {
+    max-width: 300px;
+  }
+
+  .subtitle {
+    font-size: 0.65rem;
+  }
+
+  .tagline {
+    font-size: 0.82rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .inner {
+    max-width: 580px;
+  }
+
+  .card {
+    padding: 2.5rem 2rem 2rem;
+  }
+
+  .mapContainer {
+    max-width: 460px;
+  }
+}
+

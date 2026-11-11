@@ -1,0 +1,67 @@
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import styles from './MemoriesPage.module.css'
+
+const TILTS = [-3, 3, -2, 2]
+
+export default function MemoriesPage({ onContinue, content }) {
+  const m = content.memories
+  const [broken, setBroken] = useState({})
+
+  return (
+    <div className={styles.page}>
+      <div className={styles.inner}>
+        <div className={styles.dashedTop} />
+
+        <motion.div
+          className={styles.strip}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {m.images.slice(0, 4).map((img, i) => (
+            <motion.div
+              key={i}
+              className={styles.polaroid}
+              style={{ '--tilt': `${TILTS[i % TILTS.length]}deg` }}
+              initial={{ opacity: 0, y: 30, rotate: TILTS[i % TILTS.length] }}
+              animate={{ opacity: 1, y: 0,  rotate: TILTS[i % TILTS.length] }}
+              transition={{ delay: i * 0.08, type: 'spring', stiffness: 120, damping: 14 }}
+              whileHover={{ rotate: 0, scale: 1.06, zIndex: 10 }}
+            >
+              {img.tag && <span className={styles.tag}>{img.tag}</span>}
+              {broken[i] ? (
+                <div className={styles.placeholder}>
+                  <img src="/images/hello-kitty-camera.jpg" alt="camera" className={styles.placeholderImg} />
+                </div>
+              ) : (
+                <img
+                  src={img.src}
+                  alt={img.label}
+                  className={styles.photo}
+                  onError={() => setBroken(b => ({ ...b, [i]: true }))}
+                  loading="lazy"
+                />
+              )}
+              <p className={styles.caption}>{img.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <div className={styles.dashedBottom} />
+
+        <motion.div
+          className={styles.footer}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <h2 className={styles.title}>{m.title}</h2>
+          <div className={styles.actions}>
+            <button className="btn-return" onClick={onContinue}>{m.nextButton}</button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
